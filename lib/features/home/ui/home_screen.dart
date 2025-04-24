@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:onyx_task_app/core/enums/state_enum.dart';
 import 'package:onyx_task_app/features/auth/data/models/delivery_model.dart';
 import 'package:onyx_task_app/features/auth/logic/auth_provider.dart';
-import 'package:onyx_task_app/features/home/data/models/bill_model.dart';
 import 'package:onyx_task_app/features/home/data/models/delivery_request.dart';
 import 'package:onyx_task_app/features/home/logic/home_provider.dart';
 import 'package:onyx_task_app/features/home/ui/widgets/bill_card.dart';
@@ -101,103 +100,6 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             );
       },
-    );
-  }
-
-  Widget _buildOrderCard(BillModel bill) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: const [
-          BoxShadow(color: Colors.black12, blurRadius: 5, offset: Offset(0, 3)),
-        ],
-        border: Border.all(color: Colors.grey.shade300),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(bill.billNo),
-          Row(
-            children: [
-              Expanded(
-                flex: 3,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      bill.billNo,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 6),
-                    Column(
-                      children: [
-                        const Text("Status: ", style: TextStyle(fontSize: 12)),
-                        Text(
-                          bill.dlvryStatusFlg,
-                          style: const TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const Divider(indent: 0),
-                    Column(
-                      children: [
-                        const Text(
-                          "Total price: ",
-                          style: TextStyle(fontSize: 12),
-                        ),
-                        Text(
-                          (bill.billAmt + bill.dlvryAmt + bill.taxAmt)
-                              .toString(),
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    Column(
-                      children: [
-                        const Text("Date: ", style: TextStyle(fontSize: 12)),
-                        Text(
-                          bill.billDate,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        "Order\nDetails",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
     );
   }
 }
